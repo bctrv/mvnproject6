@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio station = new Radio(9);
-    Radio volume = new Radio(0, 100);
+    Radio station = new Radio();
+    Radio volume = new Radio();
 
     @Test
     public void test() {
@@ -111,7 +111,7 @@ public class RadioTest {
     @Test
     public void ShouldSetToMaxVolume() {
 
-        volume.setTomMaxVolume();
+        volume.setMaxVolume();
 
         int expected = 100;
         int actual = volume.getCurrentVolume();
@@ -133,7 +133,7 @@ public class RadioTest {
     @Test
     public void ShouldSetMinVolume() {
 
-        volume.setToMinVolume();
+        volume.setMinVolume();
 
         int expected = 0;
         int actual = volume.getCurrentVolume();
