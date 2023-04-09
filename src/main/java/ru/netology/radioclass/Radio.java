@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class Radio {
-
     private int maxVolume = 100;
     private int minVolume = 0;
     private int minStation = 0;
@@ -19,6 +18,17 @@ public class Radio {
 
     public Radio(int size) {
         maxStation = minStation + size;
+    }
+
+
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation > 9) {
+            return;
+        }
+        if (newCurrentStation < 0) {
+            return;
+        }
+        currentStation = newCurrentStation;
     }
 
     public void nextStation() {
@@ -38,6 +48,16 @@ public class Radio {
             target = 9;
         }
         setCurrentStation(target);
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume <= minVolume) {
+            newCurrentVolume = 0;
+        }
+        if (newCurrentVolume >= maxVolume) {
+            newCurrentVolume = 100;
+        }
+        currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
