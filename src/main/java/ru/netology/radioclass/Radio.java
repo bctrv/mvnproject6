@@ -15,6 +15,9 @@ public class Radio {
         this.currentStation = minStation;
     }
 
+    public Radio() {
+    }
+
     public Radio(int size) {
         maxStation = minStation + size;
     }

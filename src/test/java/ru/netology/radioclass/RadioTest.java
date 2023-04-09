@@ -8,6 +8,12 @@ public class RadioTest {
     Radio volume = new Radio(0, 100);
 
     @Test
+    public void test1() {
+        Radio station = new Radio();
+    }
+
+
+    @Test
     public void test() {
 
         Assertions.assertEquals(0, station.getMinStation());
