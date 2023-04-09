@@ -1,16 +1,25 @@
 package ru.netology.radioclass;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
-    private int currentVolume;
-    private int currentStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int minStation = 0;
+    private int maxStation = 9;
+    private int currentStation = minStation;
+    private int currentVolume = minVolume;
 
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio(int size) {
+        maxStation = minStation + size;
     }
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
 
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation > 9) {
@@ -24,31 +33,31 @@ public class Radio {
 
     public void nextStation() {
         int target = currentStation + 1;
+
+        if (target > maxStation) {
+            target = 0;
+        }
         setCurrentStation(target);
 
     }
 
     public void prevStation() {
         int target = currentStation - 1;
+
+        if (target < minStation) {
+            target = 9;
+        }
         setCurrentStation(target);
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume <= minVolume) {
             newCurrentVolume = 0;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume >= maxVolume) {
             newCurrentVolume = 100;
         }
         currentVolume = newCurrentVolume;
-    }
-
-    public void setTomMaxVolume() {
-        currentVolume = 100;
-    }
-
-    public void setToMinVolume() {
-        currentVolume = 0;
     }
 
     public void increaseVolume() {
